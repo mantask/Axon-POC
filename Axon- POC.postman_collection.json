@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "6eccdc7b-ba0e-491d-830a-5e2e055df3f3",
+		"name": "Axon: POC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/templates",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "67a7d734-3443-4105-9554-ddf45de2b60a",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Foobar\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/templates?name=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"templates"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/templates",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "67a7d734-3443-4105-9554-ddf45de2b60a",
+						"exec": [
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"axon_poc_template_id\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/templates",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"templates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/templates/{id}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "67a7d734-3443-4105-9554-ddf45de2b60a",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/templates/{{axon_poc_template_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"templates",
+						"{{axon_poc_template_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/templates/{id}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "67a7d734-3443-4105-9554-ddf45de2b60a",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Foobar\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/templates/{{axon_poc_template_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"templates",
+						"{{axon_poc_template_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/templates/{id}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "67a7d734-3443-4105-9554-ddf45de2b60a",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/templates/{{axon_poc_template_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"templates",
+						"{{axon_poc_template_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
