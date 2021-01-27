@@ -1,4 +1,4 @@
-package lt.kanaporis.axonpoc.api.event;
+package lt.kanaporis.axon.api.event;
 
 import lombok.Builder;
 import lombok.Data;

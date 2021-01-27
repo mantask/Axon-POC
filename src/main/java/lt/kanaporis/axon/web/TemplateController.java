@@ -1,14 +1,14 @@
-package lt.kanaporis.axonpoc.web;
+package lt.kanaporis.axon.web;
 
 import lombok.AllArgsConstructor;
-import lt.kanaporis.axonpoc.api.command.CreateTemplateCommand;
-import lt.kanaporis.axonpoc.api.command.DeleteTemplateCommand;
-import lt.kanaporis.axonpoc.api.command.RenameTemplateCommand;
-import lt.kanaporis.axonpoc.api.query.FindAllTemplatesQuery;
-import lt.kanaporis.axonpoc.api.query.FindOneTemplateQuery;
-import lt.kanaporis.axonpoc.query.QueryResponse;
-import lt.kanaporis.axonpoc.web.request.TemplateRequest;
-import lt.kanaporis.axonpoc.web.response.IdResponse;
+import lt.kanaporis.axon.api.command.CreateTemplateCommand;
+import lt.kanaporis.axon.api.command.DeleteTemplateCommand;
+import lt.kanaporis.axon.api.command.RenameTemplateCommand;
+import lt.kanaporis.axon.api.query.FindAllTemplatesQuery;
+import lt.kanaporis.axon.api.query.FindOneTemplateQuery;
+import lt.kanaporis.axon.query.QueryResponse;
+import lt.kanaporis.axon.web.request.TemplateRequest;
+import lt.kanaporis.axon.web.response.IdResponse;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;

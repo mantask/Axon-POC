@@ -1,4 +1,4 @@
-package lt.kanaporis.axonpoc.api.command;
+package lt.kanaporis.axon.api.command;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-public class DeleteTemplateCommand {
+public class CreateTemplateCommand {
     @TargetAggregateIdentifier
     private UUID templateId;
 }

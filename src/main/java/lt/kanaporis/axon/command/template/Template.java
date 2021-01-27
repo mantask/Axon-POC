@@ -1,11 +1,11 @@
-package lt.kanaporis.axonpoc.command.template;
+package lt.kanaporis.axon.command.template;
 
-import lt.kanaporis.axonpoc.api.command.CreateTemplateCommand;
-import lt.kanaporis.axonpoc.api.command.DeleteTemplateCommand;
-import lt.kanaporis.axonpoc.api.command.RenameTemplateCommand;
-import lt.kanaporis.axonpoc.api.event.TemplateCreatedEvent;
-import lt.kanaporis.axonpoc.api.event.TemplateDeletedEvent;
-import lt.kanaporis.axonpoc.api.event.TemplateRenamedEvent;
+import lt.kanaporis.axon.api.command.CreateTemplateCommand;
+import lt.kanaporis.axon.api.command.DeleteTemplateCommand;
+import lt.kanaporis.axon.api.command.RenameTemplateCommand;
+import lt.kanaporis.axon.api.event.TemplateCreatedEvent;
+import lt.kanaporis.axon.api.event.TemplateDeletedEvent;
+import lt.kanaporis.axon.api.event.TemplateRenamedEvent;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;

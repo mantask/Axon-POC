@@ -1,4 +1,4 @@
-package lt.kanaporis.axonpoc.query;
+package lt.kanaporis.axon.query;
 
 public interface QueryResponse {
 }

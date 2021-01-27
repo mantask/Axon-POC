@@ -1,4 +1,4 @@
-package lt.kanaporis.axonpoc;
+package lt.kanaporis.axon;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

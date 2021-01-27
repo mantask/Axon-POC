@@ -1,4 +1,4 @@
-package lt.kanaporis.axonpoc.web.request;
+package lt.kanaporis.axon.web.request;
 
 import lombok.Data;
 

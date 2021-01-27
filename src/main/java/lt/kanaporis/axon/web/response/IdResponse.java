@@ -1,4 +1,4 @@
-package lt.kanaporis.axonpoc.web.response;
+package lt.kanaporis.axon.web.response;
 
 import lombok.Value;
 

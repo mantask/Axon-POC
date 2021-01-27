@@ -1,10 +1,10 @@
-package lt.kanaporis.axonpoc.query.templateview;
+package lt.kanaporis.axon.query.templateview;
 
-import lt.kanaporis.axonpoc.api.event.TemplateCreatedEvent;
-import lt.kanaporis.axonpoc.api.event.TemplateDeletedEvent;
-import lt.kanaporis.axonpoc.api.event.TemplateRenamedEvent;
-import lt.kanaporis.axonpoc.api.query.FindAllTemplatesQuery;
-import lt.kanaporis.axonpoc.api.query.FindOneTemplateQuery;
+import lt.kanaporis.axon.api.event.TemplateCreatedEvent;
+import lt.kanaporis.axon.api.event.TemplateDeletedEvent;
+import lt.kanaporis.axon.api.event.TemplateRenamedEvent;
+import lt.kanaporis.axon.api.query.FindAllTemplatesQuery;
+import lt.kanaporis.axon.api.query.FindOneTemplateQuery;
 import lombok.AllArgsConstructor;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;

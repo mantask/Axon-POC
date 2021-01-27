@@ -1,4 +1,4 @@
-package lt.kanaporis.axonpoc.api.query;
+package lt.kanaporis.axon.api.query;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

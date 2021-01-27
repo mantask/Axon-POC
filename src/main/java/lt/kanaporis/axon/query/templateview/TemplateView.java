@@ -1,6 +1,6 @@
-package lt.kanaporis.axonpoc.query.templateview;
+package lt.kanaporis.axon.query.templateview;
 
-import lt.kanaporis.axonpoc.query.QueryResponse;
+import lt.kanaporis.axon.query.QueryResponse;
 import lombok.Getter;
 import lombok.Setter;
 
