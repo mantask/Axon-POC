@@ -1,13 +1,13 @@
-package lt.kanaporis.axon.command.template;
+package lt.kanaporis.axon.domain;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lt.kanaporis.axon.api.command.CreateTemplateCommand;
 import lt.kanaporis.axon.api.command.DeleteTemplateCommand;
 import lt.kanaporis.axon.api.command.RenameTemplateCommand;
 import lt.kanaporis.axon.api.event.TemplateCreatedEvent;
 import lt.kanaporis.axon.api.event.TemplateDeletedEvent;
 import lt.kanaporis.axon.api.event.TemplateRenamedEvent;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -30,44 +30,41 @@ public class Template {
     private String name;
 
     @CommandHandler
-    public Template(final CreateTemplateCommand cmd) {
-        apply(TemplateCreatedEvent.builder()
-                .templateId(cmd.getTemplateId())
-                .name(BLANK)
-                .build());
+    public Template(CreateTemplateCommand cmd) {
+        apply(new TemplateCreatedEvent()
+                .setTemplateId(cmd.getTemplateId())
+                .setName(BLANK));
     }
 
     @CommandHandler
-    public void handle(final RenameTemplateCommand cmd) {
+    public void handle(RenameTemplateCommand cmd) {
         Assert.isTrue(BLANK.equals(name), "Can rename only once.");
         Assert.isTrue(!BLANK.equals(cmd.getName()), "New name cannot be blank.");
-        apply(TemplateRenamedEvent.builder()
-                .templateId(cmd.getTemplateId())
-                .name(cmd.getName())
-                .build());
+        apply(new TemplateRenamedEvent()
+                .setTemplateId(cmd.getTemplateId())
+                .setName(cmd.getName()));
     }
 
     @CommandHandler
-    public void handle(final DeleteTemplateCommand cmd) {
+    public void handle(DeleteTemplateCommand cmd) {
         Assert.isTrue(!BLANK.equals(name), "Cannot delete blank.");
-        apply(TemplateDeletedEvent.builder()
-                .templateId(cmd.getTemplateId())
-                .build());
+        apply(new TemplateDeletedEvent()
+                .setTemplateId(cmd.getTemplateId()));
     }
 
     @EventSourcingHandler
-    public void on(final TemplateCreatedEvent evt) {
-        templateId = evt.getTemplateId();
-        name = evt.getName();
+    public void on(TemplateCreatedEvent event) {
+        templateId = event.getTemplateId();
+        name = event.getName();
     }
 
     @EventSourcingHandler
-    public void on(final TemplateRenamedEvent evt) {
-        name = evt.getName();
+    public void on(TemplateRenamedEvent event) {
+        name = event.getName();
     }
 
     @EventSourcingHandler
-    public void on(final TemplateDeletedEvent evt) {
+    public void on(TemplateDeletedEvent event) {
         markDeleted();
     }
 }

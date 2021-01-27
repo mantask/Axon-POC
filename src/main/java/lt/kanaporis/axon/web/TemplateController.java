@@ -6,9 +6,8 @@ import lt.kanaporis.axon.api.command.DeleteTemplateCommand;
 import lt.kanaporis.axon.api.command.RenameTemplateCommand;
 import lt.kanaporis.axon.api.query.FindAllTemplatesQuery;
 import lt.kanaporis.axon.api.query.FindOneTemplateQuery;
-import lt.kanaporis.axon.query.QueryResponse;
-import lt.kanaporis.axon.web.request.TemplateRequest;
-import lt.kanaporis.axon.web.response.IdResponse;
+import lt.kanaporis.axon.projection.TemplateDto;
+import lt.kanaporis.axon.web.model.IdResponse;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
@@ -19,9 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -34,29 +33,34 @@ public class TemplateController {
 
     @PostMapping
     public CompletableFuture<?> create() {
-        var templateId = UUID.randomUUID();
-        return commandGateway.send(new CreateTemplateCommand(templateId))
+        var cmd = new CreateTemplateCommand()
+                .setTemplateId(UUID.randomUUID());
+        return commandGateway.send(cmd)
                 .thenApply(IdResponse::new);
     }
 
     @PutMapping("/{id}")
-    public CompletableFuture<?> rename(@PathVariable final UUID id, @RequestBody final TemplateRequest request) {
-        return commandGateway.send(new RenameTemplateCommand(id, request.getName()));
+    public CompletableFuture<?> rename(@PathVariable UUID id, @RequestBody RenameTemplateCommand cmd) {
+        cmd.setTemplateId(id);
+        return commandGateway.send(cmd);
     }
 
     @DeleteMapping("/{id}")
-    public CompletableFuture<?> delete(@PathVariable final UUID id) {
-        return commandGateway.send(new DeleteTemplateCommand(id));
+    public CompletableFuture<?> delete(@PathVariable UUID id) {
+        var cmd = new DeleteTemplateCommand()
+                .setTemplateId(id);
+        return commandGateway.send(cmd);
     }
 
     @GetMapping
-    public CompletableFuture<?> index(@RequestParam(defaultValue = "") final String name) {
-        return queryGateway.query(new FindAllTemplatesQuery(name),
-                ResponseTypes.multipleInstancesOf(QueryResponse.class));
+    public CompletableFuture<List<TemplateDto>> index(FindAllTemplatesQuery query) {
+        return queryGateway.query(query, ResponseTypes.multipleInstancesOf(TemplateDto.class));
     }
 
     @GetMapping("/{id}")
-    public CompletableFuture<?> view(@PathVariable final UUID id) {
-        return queryGateway.query(new FindOneTemplateQuery(id), QueryResponse.class);
+    public CompletableFuture<TemplateDto> view(@PathVariable UUID id) {
+        var query = new FindOneTemplateQuery()
+                .setId(id);
+        return queryGateway.query(query, TemplateDto.class);
     }
 }

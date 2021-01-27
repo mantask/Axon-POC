@@ -1,12 +1,12 @@
 package lt.kanaporis.axon.api.query;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.UUID;
 
 @Data
-@AllArgsConstructor
+@Accessors(chain = true)
 public class FindOneTemplateQuery {
     private UUID id;
 }
